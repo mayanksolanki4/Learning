@@ -1,0 +1,28 @@
+import numpy as np
+X=np.loadtxt('data.txt')
+print(X)
+print(X.shape)
+
+y=np.loadtxt('labels.txt')
+print(y)
+print(y.shape)
+
+alpha=0.12
+m=y.size
+num_iters=10000
+theta=np.random.rand(3).T
+print(theta)
+print(theta.shape)
+
+y_hat=np.dot(X,theta)
+cost=(1/(2*m))*np.sum((y_hat-y)**2)
+print(cost)
+
+for i in range(num_iters):
+  y_hat=np.dot(X,theta)
+  theta=theta-(alpha/m)*np.dot(X.T,y_hat-y)
+print(theta)
+
+y_hat=np.dot(X,theta)
+cost=(1/(2*m))*np.sum((y_hat-y)**2)
+print(cost)
